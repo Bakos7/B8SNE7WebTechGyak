@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hu">
+ <head>
+    <title>Hang lejátszása, beillesztése</title>
+    <meta charset="UTF-8">
+
+	<style>
+		article, section, aside, nav, header, footer
+			{
+				display: block;
+			}
+
+			.fejlec
+				{ 
+					font-size:		18pt;
+					color:			#66ffff;
+					background:		grey;
+					font-family:	Helvetica;
+					margin-top:		20px
+					margin-bottom:	20px
+					font-weight:	bold;
+				}
+			.urlap
+				{
+					padding:		30px;
+					font-size:		12pt;
+					font-family:	Helvetica;
+					background:		#ff6633;
+					width:			500px;
+					height:			300px;
+					border-radius:	10px;
+					box-shadow:		5px 5px 10px #888888;
+
+				}
+
+			.lablec
+				{
+					width:			560px;
+					font-size:		10pt;
+					margin-top:		40px;
+					border-top:		3px #888888 double;
+					padding-top:	30px;
+					text-align:		left;
+					font-family:	Helvetica;
+				}	
+	</style>	
+
+  </head>
+ <body>
+	<header id="fejlec"	 class="fejlec">
+			Hang/Audió lejátszása
+	</header>
+
+	<section id="tartalom">
+
+		<audio id="zene" controls style="width:800px">
+			<source src="jazzy.mp3" type="audio/mpeg">
+				A vöngésző nem támogatja a HTML audió lejátszását.
+		</audio>
+
+		<br><br><br>
+
+		<button onclick="playPause()">Lejátszás / Szünet</button>
+		&nbsp;&nbsp;&nbsp;
+		<button onclick="effektem.src='yes.mp3';effektem.play()">Pozitív</button>
+		<button onclick="effektem.src='yes.mp3';effektem.play()">Negatív</button>
+
+		<br /><br />
+
+		<button onclick="zenem.volume=0">Néma</button>
+		<button onclick="zenem.volume=0.2">Halk</button>
+		<button onclick="zenem.volume=1">Hangos</button>
+
+		&nbsp;&nbsp;&nbsp;
+		<br><br>
+
+		<button onclick="zenem.playbackRate=0.2">nagyon lassú</button>
+		<button onclick="zenem.playbackRate=0.5">lassú</button>
+		<button onclick="zenem.playbackRate=1">Normál</button>
+		<button onclick="zenem.playbackRate=2">gyorsabb</button>
+		<button onclick="zenem.playbackRate=4">nagyon gyors</button>
+
+		<br><br>
+
+		<button onclick="alert(zenem.ended)">befejeződött-e</button>
+		<button onclick="alert(zenem.duration)">audio hossza (mp)</button>
+		<button onclick="alert(zenem.currentTime)">Jelenlegi pozíció</button>
+		<button onclick="alert(zenem.currentTime=90)">Ugrás másfél perchez</button>
+
+	</section>
+
+		<footer id="lablec" class="lablec">
+	   		<br>
+			<font size="5" color="#009900"><strong><u>Forrás:</u></strong></font>
+				<a href="http://www.w3schools.com/html/html5_audio.asp" target="ujablak">
+					 <br>
+						http://w3schools.com/html/html5_audio.asp
+				</a>
+			</footer>  
+
+	<script>
+		var zenem = document.getElementById("zene");
+		var effektem = document.getElementById("effekt");
+
+		zenem.onended = function() 
+		{
+			alert("VÉGE");
+		};
+			function playPause() 
+			{
+				if (zenem.paused)
+				zenem.play();
+				else
+				zenem.pause();
+		}
+
+ </script>
+ </body>
+</html>
